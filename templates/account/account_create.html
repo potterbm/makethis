@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="strata hero hero-image right kitchen-desk">
+	<div class="grid-container">
+		<div class="grid-item grid-spacer small-0 medium-6 large-6"></div>
+		<div class="grid-item small-12 medium-5 large-5 padding-left">
+			<h1>Sign Up</h1>
+			
+			<form action="/account/new" method="post" data-remote="/api/account/new" data-remote-next="/account">{% csrf_token %}
+				
+				<label for="email">Email</label>
+				<input type="text" name="email" placeholder="email@domain.com" />
+				<label for="password">Password</label>
+				<input type="password"  name="password1" placeholder="password" />
+				
+				<p class="help-text">Note: this also means that you agree with our <a href="/tos">legal stuff</a>.</p>
+				
+				<div class="button-container"><button type="submit" class="primary-cta">Save</button></div>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

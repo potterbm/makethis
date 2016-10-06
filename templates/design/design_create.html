@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="strata">
+	<h1>Submit a design</h1>
+
+	<form action="" method="post" data-remote="/api/project/{{ project_id }}/design/new" data-remote-next="/project/{{ project_id }}" enctype="multipart/form-data">
+		{% csrf_token %}
+		
+		<div class="grid-container">
+			
+			<div class="grid-item grid-spacer small-0 medium-1 large-2"></div>
+			
+			<div class="grid-item small-12 medium-5 large-4">
+				
+				<label for="image">Image</label>
+				{{ form.image }}
+				<p class="help-text">We suggest 300x400 pixel images, or any 3:4 ratio.</p>
+				
+				<label for="comp_file">Comp File</label>
+				{{ form.comp_file }}
+				
+			</div>
+			
+			<div class="grid-item small-12 medium-5 large-4">
+				<label for="description">Description</label>
+				{{ form.description }}
+				
+				<p class="error-text" data-remote-error></p>
+			</div>
+			
+			<div class="grid-item spacer small-0 medium-1 large-2"></div>
+			
+			<div class="grid-item small-12 medium-12 large-12">
+				<div class="button-container">
+					<a class="button" href="/projects">Cancel</a>
+					<button type="submit">Save</button>
+				</div>
+			</div>
+			
+		</div>
+		
+	</form>
+</div>
+
+{% endblock content %}

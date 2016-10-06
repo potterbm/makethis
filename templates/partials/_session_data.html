@@ -1,0 +1,12 @@
+<script type="application/json" id="session-data">
+    {
+        "csrf" : "{{ csrf_token }}",
+        {% if user.is_authenticated %}
+            "user" : {{ user.account.json_string | safe }}
+        {% else %}
+            "user" : {
+                "authenticated" : false
+            }
+        {% endif %}
+    }
+</script>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<section class="project-detail-view grid-container">
+		
+		<script type="application/json" id="js-project-detail">
+			{{ project.detail_json_string | safe }}
+		</script>
+		
+		<div class="grid-item grid-spacer small-0 medium-2 large-2"></div>
+		
+		<div class="grid-item small-12 medium-8 large-8 gutter-top" data-load="js-project-detail" data-load-template="project-detail-template" data-load-model="Project" data-load-as="project"></div>
+		
+		<div class="grid-item grid-spacer small-0 medium-2 large-2"></div>
+		
+	</section>
+	
+{% endblock content %}

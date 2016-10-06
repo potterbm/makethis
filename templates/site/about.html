@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block css %}<link rel="stylesheet" type="text/css" href="/static/css/about.css" />{% endblock css %}
+
+{% block body_classes %}{{ block.super }} about-page {% endblock body_classes %}
+
+{% block content %}
+{% spaceless %}
+	
+	<section class="strata hero dark hero-image mojito black-overlay gradient">
+		<div class="grid-container">
+			<div class="grid-item grid-spacer small-0 medium-5 large-5"></div>
+			<div class="grid-item small-12 medium-6 large-6">
+				<h1>You're awesome at something</h1>
+				<h2>(but probably not everything)</h2>
+				<hr class="tiny-keyline spacer" />
+				<p>Why not get the help you need from people who do it for a living?</p>
+			</div>
+			
+		</div>
+	</section>
+	
+	<section id="how-it-works">
+		<div class="strata white">
+			<div class="grid-container">
+				<div class="grid-item small-12 medium-4 large-4 about-tile">
+					<div class="im im-light-bulb"></div>
+					<h3>Inspiration</h3>
+					<p>Are you an idea person? Submit one (or all) of your ideas to see talented people bring it to life.</p>
+				</div>
+				
+				<div class="grid-item small-12 medium-4 large-4 about-tile">
+					<div class="im im-layout"></div>
+					<h3>Design</h3>
+					<p>Knock out some concepts or create a pixel-perfect, polished design. Multiple designs are allowed, so feel free to improve on what other people are doing.</p>
+				</div>
+				
+				<div class="grid-item small-12 medium-4 large-4 about-tile">
+					<div class="im im-keyboard"></div>
+					<h3>Development</h3>
+					<p>Are you running out of side projects? Spend some time making one of these designs a reality. Let's be honest, you'd be coding anyway.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="site-promo-hero strata dark hero hero-image kitchen-desk black-overlay">
+		<h1>So Get To Work</h1>
+		<h2>and make something awesome</h2>
+		<hr class="tiny-keyline spacer" />
+		<a href="/account/new" class="button primary">Sign Up</a>
+	</section>
+	
+{% endspaceless %}
+{% endblock content %}

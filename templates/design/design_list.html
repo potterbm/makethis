@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	{% if user.is_authenticated %}
+		<section class="site-promo-hero strata dark hero hero-image mountain black-overlay">
+			<h1>Have An Awesome Idea?</h1>
+			<h2>want some help?</h2>
+			<hr class="tiny-keyline spacer" />
+			<a href="/project/new" class="button primary">Submit Project</a>
+		</section>
+	{% else %}
+		<section class="site-promo-hero strata dark hero hero-image kitchen-desk black-overlay">
+			<h1>Get To Work</h1>
+			<h2>and make something awesome</h2>
+			<hr class="tiny-keyline spacer" />
+			<a href="/account/new" class="button primary">Sign Up</a>
+		</section>
+	{% endif %}
+	
+	<section class="strata white item-filters">
+		<nav class="grid-container">
+			<ul class="grid-item small-12 medium-12 large-12">
+				<li class="js-filter-designs" data-item-filter="popular">Popular</li>
+				<li class="js-filter-designs" data-item-filter="time">Recent</li>
+				<li class="js-filter-designs" data-item-filter="starred">Starred</li>
+			</ul>
+		</nav>
+	</section>
+	
+	<section class="strata design-card-view">
+		
+		<script type="application/json" id="js-design-cards">
+			[{% for design in designs %}{{ design.json_string | safe }}{% if not forloop.last %}, {% endif %}{% endfor %}]
+		</script>
+		
+		<div class="grid-container" data-load="js-design-cards" data-load-template="design-card-template" data-load-collection data-load-model="Design" data-load-as="design"></div>
+		
+	</section>
+	
+{% endblock content %}

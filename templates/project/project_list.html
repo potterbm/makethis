@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+		<section class="site-promo-hero strata dark hero hero-image mountain black-overlay">
+			<h1>Have An Awesome Idea?</h1>
+			<h2>want some help?</h2>
+			<hr class="tiny-keyline spacer" />
+			<a href="/project/new" class="button primary">Submit Project</a>
+		</section>
+	{% else %}
+		<section class="site-promo-hero strata dark hero hero-image skater black-overlay">
+			<h1>Get To Work</h1>
+			<h2>and make something awesome</h2>
+			<hr class="tiny-keyline spacer" />
+			<a href="/account/new" class="button primary">Sign Up</a>
+		</section>
+	{% endif %}
+	
+	<section id="js-project-card-list" class="strata project-card-view" data-display-format="card"></section>
+
+	<script type="application/json" id="js-project-card-data">
+		[{% for project in projects %}{{ project.json_string | safe }}{% if not forloop.last %}, {% endif %}{% endfor %}]
+	</script>
+{% endblock content %}
+
+{% block backup %}
+
+	{% if user.is_authenticated %}
+		<section class="site-promo-hero strata dark hero hero-image mountain black-overlay">
+			<h1>Have An Awesome Idea?</h1>
+			<h2>want some help?</h2>
+			<hr class="tiny-keyline spacer" />
+			<a href="/project/new" class="button primary">Submit Project</a>
+		</section>
+	{% else %}
+		<section class="site-promo-hero strata dark hero hero-image skater black-overlay">
+			<h1>Get To Work</h1>
+			<h2>and make something awesome</h2>
+			<hr class="tiny-keyline spacer" />
+			<a href="/account/new" class="button primary">Sign Up</a>
+		</section>
+	{% endif %}
+
+	{% include "partials/_item_filters.html" %}
+
+	<section class="strata project-card-view">
+
+
+
+		<div class="grid-container" data-load="js-project-cards" data-load-template="project-card-template" data-load-collection data-load-model="Project" data-load-as="project"></div>
+
+	</section>
+
+{% endblock backup %}

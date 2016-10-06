@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% spaceless %}
+
+<div class="grid-container">
+	<div class="grid-item grid-spacer small-9 medium-3 large-3 gutter-top"></div>
+	<div class="grid-item small-3 medium-1 large-1 gutter-top">
+		<a href="/account/edit">Edit</a>
+	</div>
+	<div class="grid-item grid-spacer small-0 medium-8 large-8 gutter-top"></div>
+</div>
+
+<section class="user-profile-view grid-container">
+
+	<div class="grid-item small-12 medium-4 large-4">
+		<div class="user">
+			<div class="user-avatar" style="background-image: url('{{ user.account.avatar.url }}')"></div>
+
+			<h1 class="user-name">{{ user.get_full_name }}</h1>
+
+			<h5 class="user-skill">Concept Artist &amp; Designer &amp; Developer</h5>
+
+			<nav class="user-links">
+				<a href="{{ user.account.twitter }}" class="user-link user-twitter im im-twitter"></a>
+				<a href="{{ user.account.facebook }}" class="user-link user-twitter im im-facebook"></a>
+				<a href="{{ user.account.website }}" class="user-link user-website im im-website"></a>
+			</nav>
+		</div>
+
+		<div class="user-stats">
+			<div class="user-stat">
+				<h1><span class="im im-light-bulb"></span>{{ user.projects.count }}</h1>
+				<h5>Projects</h5>
+			</div>
+			<div class="user-stat">
+				<h1><span class="im im-layout"></span>{{ user.designs.count }}</h1>
+				<h5>Designs</h5>
+			</div>
+			<div class="user-stat">
+				<h1><span class="im im-keyboard"></span>{{ user.code.count }}</h1>
+				<h5>Code</h5>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-item small-12 medium-8 large-8">
+		<div class="user-timeline">
+			<div class="user-story">
+				<div class="user-story-icon im im-bubble"></div>
+				<p>Someone commented on a <a href="/project/3">project</a> you submitted.</p>
+			</div>
+
+			<div class="user-story">
+				<div class="user-story-icon im im-layout"></div>
+				<p>Someone liked your <a href="/project/3">design</a></p>
+			</div>
+
+			<div class="user-story">
+				<div class="user-story-icon im im-light-bulb"></div>
+				<p>Someone liked your <a href="/project/3">project</a></p>
+			</div>
+
+			<div class="user-story">
+				<div class="user-story-icon im im-user"></div>
+				<p>Someone mentioned you in a comment on a <a href="/project/3">project</a></p>
+			</div>
+
+			<div class="user-story">
+				<div class="user-story-icon im im-keyboard"></div>
+				<p>Someone liked your <a href="/project/3">code</a></p>
+			</div>
+		</div>
+	</div>
+</section>
+{% endspaceless %}
+
+
+{# Projects #}
+
+{% if user.projects.count > 0 %}
+	<section class="grid-container user-profile-section project-card-view">
+		<h3>Projects</h3>
+		<div data-lazy-load="/api/account/projects?limit=3" data-lazy-load-template="project-card-template" data-lazy-load-model="Project"></div>
+
+		{% if user.projects.count > 3 %}
+			<a href="/account/projects" class="see-more">See More</a>
+		{% endif %}
+	</section>
+{% endif %}
+
+
+{# Designs #}
+
+{% if user.designs.count > 0 %}
+	<section class="user-profile-section grid-container design-card-view">
+		<h3>Designs</h3>
+		<div data-lazy-load="/api/account/designs?limit=3" data-lazy-load-template="design-card-template" data-lazy-load-model="Design"></div>
+
+		{% if user.designs.count > 3 %}
+			<a href="/account/designs" class="see-more">See More</a>
+		{% endif %}
+	</section>
+{% endif %}
+
+
+{# Code #}
+
+{% if user.code.count > 0 %}
+	<section class="user-profile-section grid-container code-card-view">
+		<h3>Code</h3>
+		<div data-lazy-load="/api/account/code?limit=3" data-lazy-load-template="code-card-template" data-lazy-load-model="Code"></div>
+
+		{% if user.code.count > 3 %}
+			<a href="/account/code" class="see-more">See More</a>
+		{% endif %}
+	</section>
+{% endif %}
+
+{% endblock content %}

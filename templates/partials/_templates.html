@@ -1,0 +1,194 @@
+{% comment %}
+
+	Project - Bubble
+
+	This template should be used when a project is an aside to the main point of the page or section. It is also
+	useful for lists of projects.
+
+{% endcomment %}
+
+<script type="text/html" id="project-bubble-template">
+	<a data-bind="attr : { 'href' : item.detail_url() }" class="project">
+		<div class="project-image image-height-ratio-1-1" data-bind="attr : { 'style' : 'background-image: url(\'' + item.image() + '\');' }"></div>
+
+		<div class="project-info">
+			<h1 data-bind="text: item.title"></h1>
+			<div class="project-stats">
+				<div class="project-stat views" data-bind="text: item.views"></div>
+				<div class="project-stat design-count" data-bind="text: item.design_count()"></div>
+				<div class="project-stat code-count" data-bind="text: item.code_count()"></div>
+			</div>
+
+			<div class="project-controls">
+				<div class="project-control like js-like-project"></div>
+				<div class="project-control share js-share-project"></div>
+			</div>
+		</div>
+	</a>
+</script>
+
+
+{% comment %}
+
+	Project - Card
+
+	This template should be used when a list of projects is the main point of the page or section. It is also
+	useful for lists of projects.
+
+{% endcomment %}
+<script type="text/html" id="project-card-template">
+	<div class="grid-item small-12 medium-4 large-4 gutter-bottom">
+		<a data-bind="attr : { 'href' : item.detail_url() }, css: { 'project-liked' : item.liked(), 'project-starred' : item.starred() }" class="project">
+			<div class="project-image image-height-ratio-3-4" data-bind="attr : { 'style' : 'background-image: url(\'' + item.image() + '\');' }"></div>
+			<div class="project-info">
+				<h2 data-bind="text: item.title"></h2>
+				<p data-bind="text: item.description"></p>
+
+				<div class="project-stats"><div class="project-stat views" data-bind="text: item.views"></div><div class="project-stat design-count" data-bind="text: item.design_count()"></div><div class="project-stat code-count" data-bind="text: item.code_count()"></div></div>
+
+				<div class="project-controls">
+					<div class="project-control like js-like-project"></div>
+					<div class="project-control share js-share-project"></div>
+				</div>
+			</div>
+		</a>
+	</div>
+</script>
+
+
+{% comment %}
+
+	Project - Detail
+
+	This template should be used when a single project is the main point of the page. It should usually be
+	the only thing on the page.
+
+{% endcomment %}
+<script type="text/html" id="project-detail-template">
+	<div class="project" data-bind="css: { 'project-liked' : item.liked(), 'project-starred' : item.starred() }">
+
+		<h1 data-bind="text: item.title"></h1>
+
+		<h5 class="created-at" data-bind="text: item.pretty_date(item.created_at())"></h5>
+
+		<div class="project-image image-height-ratio-3-4" data-bind="attr : { 'style' : 'background-image: url(\'' + item.image() + '\');' }"></div>
+
+		<div class="project-info">
+			<div class="project-stat views">
+				<h5>Views</h5>
+				<p data-bind="text: item.views"></p>
+			</div>
+			<div class="project-stat likes js-like">
+				<h5>Likes</h5>
+				<p data-bind="text: item.likes()"></p>
+			</div>
+
+			<div>
+				<h5>Tags</h5>
+				<div data-bind="foreach: item.tags">
+					<div class="tag" data-bind="text: title"></div>
+				</div>
+			</div>
+		</div>
+
+		<p data-bind="text: item.description()"></p>
+
+		<div class="design-bubble-view project-section">
+			<h3>Designs <span class="project-section-count" data-bind="text: item.design_count()"></span><a class="button add-new" data-bind="attr: { 'href' : '/project/' + item.id + '/design/new' }">Submit Design</a></h3>
+			<div data-bind="foreach: item.designs">
+				<a class="design" data-bind="attr : { 'style' : 'background-image: url(\'' + image() + '\');', 'href' : detail_url() }">
+					<h2 data-bind="text: creator_initials()"></h2>
+				</a>
+			</div>
+
+			<div data-bind="visible: item.design_count() < 1">
+				<h4>There are no designs for this project. Yet.</h4>
+			</div>
+		</div>
+
+		<div class="code-bubble-view project-section">
+			<h3>Code <span class="project-section-count" data-bind="text: item.code_count()"></span><a class="button add-new" data-bind="attr: { 'href' : '/project/' + item.id + '/code/new' }">Submit Code</a></h3>
+			<div data-bind="foreach: item.designs()">
+				<a class="design" data-bind="attr : { 'style' : 'background-image: url(\'' + image() + '\');', 'href' : detail_url() }">
+					<h2 data-bind="text: creator_initials()"></h2>
+				</a>
+			</div>
+
+			<div data-bind="visible: item.code_count() < 1">
+				<h4>There are no code entries for this project. Yet.</h4>
+			</div>
+		</div>
+
+		<div class="project-comments project-section">
+			<h3>Comments <span class="project-section-count" data-bind="text: item.comment_count()"></span></h3>
+
+			<div data-bind="foreach: item.comments()">
+				<h4 data-bind="text: user.name"></h4>
+				<div class="comment-user-avatar" data-bind="attr: { 'style' : 'background-image: url(\'' + user.avatar + '\');' }"></div>
+				<p data-bind="text: text"></p>
+			</div>
+
+			<div data-bind="visible: item.comment_count() < 1">
+				<h4>There are no comments on this project. Yet.</h4>
+			</div>
+
+			{% if user.is_authenticated %}
+				<form data-bind="attr: { 'data-remote' : '/api/project/' + item.id + '/comment' }">
+					<textarea name="comment" placeholder=""></textarea>
+
+					<button type="submit" class="">Comment</button>
+				</form>
+			{% endif %}
+		</div>
+	</div>
+</script>
+
+
+{% comment %}
+
+	Design - Card
+
+	This template should be used when a list of designs is the main point of the page or section.
+
+{% endcomment %}
+<script type="text/html" id="design-card-template">
+
+</script>
+
+
+{% comment %}
+
+	Design - Detail
+
+	This template should be used when a design is the main point of the page. It should usually be the only thing
+	in the main content area of the page.
+
+{% endcomment %}
+<script type="text/html" id="design-detail-template">
+
+</script>
+
+
+{% comment %}
+
+	Code - Card
+
+	This template should be used when a list of code entries is the main point of the page or section.
+
+{% endcomment %}
+<script type="text/html" id="code-card-template">
+
+</script>
+
+
+{% comment %}
+
+	Code - Detail
+
+	This template should be used when a code entry is the main point of the page. It should usually be the only thing
+	in the main content area of the page.
+
+{% endcomment %}
+<script type="text/html" id="code-detail-template">
+
+</script>

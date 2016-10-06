@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="strata">
+	<h1>Edit your account</h1>
+
+	<form action="" method="post" data-remote="/api/account/edit" data-remote-image="/api/account/image" enctype="multipart/form-data">
+		{% csrf_token %}
+
+		<div class="grid-container">
+
+			<div class="grid-item grid-spacer small-0 medium-1 large-2"></div>
+
+			<div class="grid-item small-12 medium-5 large-4">
+
+				<label for="avatar">Avatar</label>
+				{{ form.avatar }}
+				<p class="help-text">We suggest 300x400 pixel images, or any 3:4 ratio.</p>
+
+			</div>
+
+			<div class="grid-item small-12 medium-5 large-4">
+                <label for="user_url">User URL</label>
+				{{ form.user_url }}
+
+				<label for="codepen_author">Codepen Username</label>
+				{{ form.codepen_author }}
+
+				<label for="birthday">Birthday</label>
+				{{ form.birthday }}
+
+				<p class="error-text" data-remote-error></p>
+			</div>
+
+			<div class="grid-item spacer small-0 medium-1 large-2"></div>
+
+			<div class="grid-item small-12 medium-12 large-12">
+				<div class="button-container">
+					<a class="button" href="/account">Cancel</a>
+					<button type="submit">Save</button>
+				</div>
+			</div>
+
+		</div>
+
+	</form>
+</div>
+
+{% endblock content %}

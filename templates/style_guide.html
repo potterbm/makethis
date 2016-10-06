@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block css %}<link rel="stylesheet" type="text/css" href="/static/css/style-guide.css" />{% endblock css %}
+
+{% block content %}
+
+	<div class="strata white">
+		
+		<h1>Page Title</h1>
+		<h2>Main Section Heading</h2>
+		<h3>Section Heading</h3>
+		<h4>Paragraph Heading</h4>
+		<h5>Footer Heading</h5>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, aperiam totam officiis praesentium dolorem nisi officia ea, nam quis laboriosam odit, ex beatae laborum. Sit repellendus deserunt numquam necessitatibus amet nulla ipsa, modi doloremque! Nemo quos cumque a, eos soluta! Mollitia eius voluptas dignissimos molestiae inventore facere enim nisi earum ipsam, cupiditate esse, sed quas ipsa ea vero sequi illum accusantium odio, quaerat eligendi quo natus. Consequatur dolorem ad eum voluptatum nostrum quod recusandae sint. Cupiditate, nobis fugit obcaecati accusantium ipsum quibusdam consequatur doloremque autem fugiat praesentium repellendus nam inventore in, sapiente possimus, eveniet nulla enim? Facere consequatur quo a.</p>
+	</div>
+	
+	<div class="strata colored">
+		
+		<h1>Page Title</h1>
+		<h2>Main Section Heading</h2>
+		<h3>Section Heading</h3>
+		<h4>Paragraph Heading</h4>
+		<h5>Footer Heading</h5>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, aperiam totam officiis praesentium dolorem nisi officia ea, nam quis laboriosam odit, ex beatae laborum. Sit repellendus deserunt numquam necessitatibus amet nulla ipsa, modi doloremque! Nemo quos cumque a, eos soluta! Mollitia eius voluptas dignissimos molestiae inventore facere enim nisi earum ipsam, cupiditate esse, sed quas ipsa ea vero sequi illum accusantium odio, quaerat eligendi quo natus. Consequatur dolorem ad eum voluptatum nostrum quod recusandae sint. Cupiditate, nobis fugit obcaecati accusantium ipsum quibusdam consequatur doloremque autem fugiat praesentium repellendus nam inventore in, sapiente possimus, eveniet nulla enim? Facere consequatur quo a.</p>
+	</div>
+	
+	<div class="strata dark">
+		
+		<h1>Page Title</h1>
+		<h2>Main Section Heading</h2>
+		<h3>Section Heading</h3>
+		<h4>Paragraph Heading</h4>
+		<h5>Footer Heading</h5>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, aperiam totam officiis praesentium dolorem nisi officia ea, nam quis laboriosam odit, ex beatae laborum. Sit repellendus deserunt numquam necessitatibus amet nulla ipsa, modi doloremque! Nemo quos cumque a, eos soluta! Mollitia eius voluptas dignissimos molestiae inventore facere enim nisi earum ipsam, cupiditate esse, sed quas ipsa ea vero sequi illum accusantium odio, quaerat eligendi quo natus. Consequatur dolorem ad eum voluptatum nostrum quod recusandae sint. Cupiditate, nobis fugit obcaecati accusantium ipsum quibusdam consequatur doloremque autem fugiat praesentium repellendus nam inventore in, sapiente possimus, eveniet nulla enim? Facere consequatur quo a.</p>
+	</div>
+	
+	<div class="strata">
+		<h1 class="strata-title">Form Widgets</h1>
+		
+		<form action="">
+			<label for="">Text Field Label</label>
+			<input type="text" placeholder="Placeholder" />
+			
+			<label for="">Email Field Label</label>
+			<input type="email" placeholder="username@domain.com" />
+			<p class="help-text">This is help text.</p>
+			
+			<label for="" class="required-field">Required Field Label</label>
+			<input type="password" placeholder="Password" />
+			
+			<label for="">Radio Group Label</label>
+			<div><input type="radio" name="style-guide-group" /><label for="" class="inline">Choice 1</label></div>
+			<div><input type="radio" name="style-guide-group" /><label for="" class="inline">Choice 2</label></div>
+			<div><input type="radio" name="style-guide-group" /><label for="" class="inline">Choice 3</label></div>
+			
+			<label for="">URL Field Label</label>
+			<input type="url" placeholder="Placeholder" />
+			
+			<label for="">Checkbox Field Label</label>
+			<input type="checkbox" placeholder="Placeholder" /><label for="" class="inline">Toggle Option</label>
+			
+			<div class="button-container">
+				<button type="cancel">Cancel</button>
+				<button type="submit">Save</button>
+			</div>
+			
+			<p class="error-text">This is some error text.</p>
+		</form>
+	</div>
+	
+	<div class="strata dark">
+		<h1 class="strata-title">Form Widgets</h1>
+		
+		<form action="">
+			<label for="">Text Field Label</label>
+			<input type="text" placeholder="Placeholder" />
+			
+			<label for="">Email Field Label</label>
+			<input type="email" placeholder="username@domain.com" />
+			<p class="help-text">This is help text.</p>
+			
+			<label for="" class="required-field">Required Field Label</label>
+			<input type="password" placeholder="Password" />
+			
+			<label for="">Radio Group Label</label>
+			<input type="radio" name="style-guide-group" /><label for="" class="inline">Choice 1</label>
+			<input type="radio" name="style-guide-group" /><label for="" class="inline">Choice 2</label>
+			<input type="radio" name="style-guide-group" /><label for="" class="inline">Choice 3</label>
+			
+			<label for="">URL Field Label</label>
+			<input type="url" placeholder="Placeholder" />
+			
+			<label for="">Checkbox Field Label</label>
+			<input type="checkbox" placeholder="Placeholder" />
+			
+			<div class="button-container">
+				<button type="cancel">Cancel</button>
+				<button type="submit">Save</button>
+			</div>
+			
+			<p class="error-text">This is some error text.</p>
+		</form>
+	</div>
+
+{% endblock content %}

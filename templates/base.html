@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block meta %}{% endblock meta %}
+
+	<title>{% block page_title %}MakeThis{% endblock page_title %}</title>
+
+	<!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" /> -->
+	<link rel="stylesheet" type="text/css" href="/static/lib/source-sans-pro.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,400,400italic,700,700italic,900,900italic" /> -->
+	<link rel="stylesheet" type="text/css" href="/static/lib/lato.css" />
+
+	<link rel="stylesheet" type="text/css" href="/static/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/twelve-grid.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/makethis.css" />
+	{% block css %}{% endblock css %}
+
+	{% include 'partials/_session_data.html' %}
+
+</head>
+
+<body class="{% block body_classes %}{% endblock body_classes %}" {% block body_attributes %}{% endblock body_attributes %}>
+	<div id="js-react-app-root"></div>
+
+	{% comment %}
+	<div class="header-wrapper">
+		{% include 'partials/_header.html' %}
+	</div>
+
+
+	<div class="content-wrapper">
+		{% block content %}{% endblock content %}
+	</div>
+
+
+	<div class="footer-wrapper">
+		{% include 'partials/_footer.html' %}
+	</div>
+	{% endcomment %}
+
+
+	<script src="/static/lib/jquery.js"></script>
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+
+	<script src="/static/lib/knockout-min.js"></script>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script> -->
+
+	<script src="/static/lib/underscore-min.js"></script>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script> -->
+
+	<script src="/static/lib/react.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.6/react.min.js"></script> -->
+
+	<script src="/static/lib/react-dom.js"></script>
+	<!-- <script src="/static/lib/react-dom-server.js"></script> -->
+
+	<script src="/static/lib/react-router-history.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/history/1.17.0/History.js"></script> -->
+
+	<script src="/static/lib/react-router.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/1.0.3/ReactRouter.js"></script> -->
+
+
+	<script src="/static/js/makethis.js"></script>
+	<script src="/static/js/utils/utils.js"></script>
+	<script src="/static/js/utils/api.js"></script>
+	<script src="/static/js/react/mixins.js"></script>
+  <script src="/static/js/react/components/form.js"></script>
+	<script src="/static/js/react/components/design.js"></script>
+	<script src="/static/js/react/components/project.js"></script>
+	<script src="/static/js/react/components/promos.js"></script>
+	<script src="/static/js/react/components/user.js"></script>
+	<script src="/static/js/react/pages/project_pages.js"></script>
+	<script src="/static/js/react/pages/home.js"></script>
+	<script src="/static/js/flux/dispatcher.js"></script>
+	<script src="/static/js/flux/stores/store.js"></script>
+	<script src="/static/js/react/app.js"></script>
+	<!-- <script src="/static/js/models/Project.js"></script>
+	<script src="/static/js/utils/forms.js"></script>
+	<script src="/static/js/utils/load.js"></script>
+	<script src="/static/js/utils/codepen.js"></script>
+	<script src="/static/js/utils/search.js"></script> -->
+	{% block javascript %}{% endblock javascript %}
+
+	<div id="js-templates">
+		{% include 'partials/_templates.html' %}
+	</div>
+	<div id="mobile"></div>
+	<div id="tablet"></div>
+	<div id="desktop"></div>
+</body>
+</html>

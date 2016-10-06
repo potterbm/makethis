@@ -1,0 +1,30 @@
+<header>
+	<div class="grid-container">
+		<div class="grid-item small-6 medium-4 large-1">{% include 'partials/_logo.html' %}</div>
+
+		<div class="grid-item small-0 medium-4 large-8">
+			<nav class="left">
+				<ul>
+					<li><a href="/projects">Projects</a></li>
+					<li><a href="/designs">Designs</a></li>
+					<li><a href="/code">Code</a></li>
+					<li><a href="/why">Why?</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="grid-item small-12 medium-4 large-3">
+			<nav class="right">
+				<ul>
+					{% if user.is_authenticated %}
+						<li class="unread"><a href="/account">{{ user.account.display_name | capfirst }}</a></li>
+						<li><a href="/account/logout">Logout</a></li>
+					{% else %}
+						<li><a href="/account/login">Login</a></li>
+						<li><a href="/account/new">Sign Up</a></li>
+					{% endif %}
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>

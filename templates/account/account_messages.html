@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% spaceless %}
+<section class="user-profile-view grid-container">
+	<div class="grid-item small-12 medium-4 large-4 gutter-top">
+		<div class="user">
+			<div class="user-avatar" style="background-image: url('{{ user.account.avatar.url }}')"></div>
+			
+			<h1 class="user-name">{{ user.get_full_name }}</h1>
+			
+			<h5 class="user-skill">Concept Artist &amp; Designer &amp; Developer</h5>
+			
+			<nav class="user-links">
+				<a href="{{ user.account.twitter }}" class="user-link user-twitter im im-user"></a>
+				<a href="{{ user.account.website }}" class="user-link user-website im im-gear"></a>
+			</nav>
+		</div>
+	</div>
+	
+	<div class="grid-item small-12 medium-8 large-8 gutter-top">
+		<div class="user-messages">
+			<div class="user-stat following">
+				<div class="user-stat-value">0</div>
+				<h5><span class="im im-heart"></span> Following</h5>
+			</div>
+			
+			<div class="user-stat followers">
+				<div class="user-stat-value">0</div>
+				<h5><span class="im im-user"></span> Followers</h5>
+			</div>
+		</div>
+	</div>
+</section>
+{% endspaceless %}
+
+
+
+{% endblock content %}
